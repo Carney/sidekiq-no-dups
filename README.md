@@ -1,6 +1,6 @@
-# Sidekiq::No::Dups
+# SidekiqNoDups
 
-TODO: Write a gem description
+Checks for the existnace of a job on the queue with the same args and doesn't add duplicate jobs.
 
 ## Installation
 
@@ -18,7 +18,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add `sidekiq_options no_dups: true` to the workers you want to have unique jobs.
+
+```
+class MyWorker
+  include Sidekiq::Worker
+  sidekiq_options no_dups: true
+
+  def perform
+    ...
+  end
+end
+```
 
 ## Contributing
 
